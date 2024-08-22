@@ -1,38 +1,139 @@
-.App {
-  text-align: center;
+/* Color scheme
+
+Fresh and Vibrant
+Primary Color: Sky Blue (#87CEEB)
+Secondary Color: White (#FFFFFF)
+
+*/
+
+body {
+  font-family: Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ql-editor img {
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 0px;
+  background-color: #87CEEB;
+  color: white;
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.3);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header h1 {
+  margin-left: 10px;
+  text-shadow: 0 0 5px #000000, 0 0 5px #000000, 0 0 5px #080808, 0 0 5px #050505, 0 0 5px ;
+}
+
+.login-button {
+  padding: 35px 30px;
+  background-color: white;
+  font-size: medium;
+  font-weight: bold;
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #21a1f1;
+}
+
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 20px;
+}
+
+input, textarea {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #21a1f1;
+}
+
+.blogButton {
+  text-align: center;
+  margin-top: 300px;
+  
+}
+
+.startBlogButton {
+  padding: 20px;
   color: white;
+  font-weight: bold;
+  font-size: medium;
+  border-radius: 30px;
+  background-color: #61dafb;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
-.App-link {
-  color: #61dafb;
+/* Style the login form */
+.auth-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.auth-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.auth-form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+}
+
+.auth-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background-color: #0056b3;
+}
+
+.auth-form .toggle-button {
+  margin-top: 10px;
+  background-color: #6c757d;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.auth-form .toggle-button:hover {
+  background-color: #5a6268;
 }
