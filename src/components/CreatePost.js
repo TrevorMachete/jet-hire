@@ -100,9 +100,23 @@ const CreatePost = () => {
     };
   }
 
+  const extractTitleAndMedia = (data) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data, 'text/html');
+    const heading = doc.querySelector('h2');
+    const image = doc.querySelector('img');
+
+    if (heading) {
+      setTitle(heading.textContent);
+    }
+
+    if (image) {
+      setMedia(image.src);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit}>
-
       <div>
         <label>
           <input
@@ -126,6 +140,7 @@ const CreatePost = () => {
           onChange={(event, editor) => {
             const data = editor.getData();
             setContent(data);
+            extractTitleAndMedia(data);
           }}
           config={{
             extraPlugins: [MyCustomUploadAdapterPlugin],

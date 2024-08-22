@@ -1,8 +1,9 @@
-// src/App.js
 import React, { useState } from 'react';
 import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import CreatePost from './components/CreatePost';
+import EditPost from './components/EditPost';
+import BlogList from './components/BlogList';
 import AuthForm from './components/AuthForm';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
@@ -16,6 +17,14 @@ const App = () => {
     navigate('/create-post');
   };
 
+  const handleEditPost = () => {
+    navigate('/edit-post');
+  };
+
+  const handleViewPosts = () => {
+    navigate('/blog-list');
+  };
+
   const handleLogin = () => {
     setShowAuthForm(true);
   };
@@ -23,13 +32,16 @@ const App = () => {
   return (
     <div className="App">
       <Header onLogin={handleLogin} />
-      {location.pathname !== '/create-post' && (
+      {location.pathname !== '/create-post' && location.pathname !== '/blog-list' && (
         <div className='blogButton'>
           <button className='startBlogButton' onClick={handleStartBlog}>Create Post</button>
+          <button className='viewPostsButton' onClick={handleViewPosts}>View Posts</button>
         </div>
       )}
       <Routes>
         <Route path="/create-post" element={<PrivateRoute><CreatePost /></PrivateRoute>} />
+        <Route path="/edit-post" element={<PrivateRoute><EditPost /></PrivateRoute>} />
+        <Route path="/blog-list" element={<PrivateRoute><BlogList /></PrivateRoute>} />
         <Route path="/auth" element={<AuthForm />} />
       </Routes>
       {showAuthForm && <AuthForm />}
@@ -38,4 +50,3 @@ const App = () => {
 };
 
 export default App;
-

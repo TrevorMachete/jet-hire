@@ -35,7 +35,7 @@ const Header = ({ onLogin }) => {
 
   return (
     <header className="header">
-      <h1>Superblisher</h1>
+      <h2>Superblisher</h2>
       <button className="login-button" onClick={handleLogin}>
         {user ? username : 'Log In'}
       </button>
