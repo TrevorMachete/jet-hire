@@ -6,6 +6,7 @@ import EditPost from './components/EditPost';
 import BlogList from './components/BlogList';
 import AuthForm from './components/AuthForm';
 import PrivateRoute from './components/PrivateRoute';
+import Feed from './components/Feed'; // Import the Feed component
 import './App.css';
 
 const App = () => {
@@ -39,8 +40,9 @@ const App = () => {
         </div>
       )}
       <Routes>
+        <Route path="/" element={<Feed />} /> {/* Add the Feed route */}
         <Route path="/create-post" element={<PrivateRoute><CreatePost /></PrivateRoute>} />
-        <Route path="/edit-post" element={<PrivateRoute><EditPost /></PrivateRoute>} />
+        <Route path="/edit-post/:postNumber" element={<PrivateRoute><EditPost /></PrivateRoute>} />
         <Route path="/blog-list" element={<PrivateRoute><BlogList /></PrivateRoute>} />
         <Route path="/auth" element={<AuthForm />} />
       </Routes>

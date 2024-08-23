@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
+import '../App.css';
 
 const Header = ({ onLogin }) => {
   const [user, setUser] = useState(null);

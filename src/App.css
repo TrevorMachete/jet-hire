@@ -167,15 +167,71 @@ button:hover {
   align-items: center;
 }
 
-.blog-item img {
-  margin-right: 10px;
+.blog-image {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
 }
 
-.blog-item h3 {
+.blog-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-details h3 {
   margin: 0;
-  flex-grow: 1;
 }
 
-.blog-item p {
-  margin: 0 10px;
+.blog-details p {
+  margin: 0;
+  color: #666;
+}
+
+.post-date {
+  font-size: 10px;
+}
+
+
+/* Style the posts in feed */
+
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.feed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  
+  width: 100%;
+  margin: 10px;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.post-content h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.post-content p {
+  font-size: 1em;
+  margin-bottom: 10px;
 }

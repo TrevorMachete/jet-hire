@@ -1,4 +1,3 @@
-// src/components/CreatePost.js
 import React, { useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { db, storage } from '../firebase';
@@ -33,19 +32,13 @@ const CreatePost = () => {
         await setDoc(userDocRef, { posts: [] });
       }
 
-      let mediaUrl = null;
-      if (media) {
-        const mediaRef = ref(storage, `media/${media.name}`);
-        await uploadBytes(mediaRef, media);
-        mediaUrl = await getDownloadURL(mediaRef);
-      }
-
       const newPost = {
         postNumber,
         title,
         content,
-        media: mediaUrl,
+        media, // Use the media state variable here
         createdAt: new Date(),
+        userId: user.uid,
       };
 
       await updateDoc(userDocRef, {
@@ -78,6 +71,8 @@ const CreatePost = () => {
             uploadBytes(storageRef, file)
               .then((snapshot) => getDownloadURL(snapshot.ref))
               .then((url) => {
+                console.log('Upload Adapter URL:', url); // Debugging log
+                setMedia(url); // Assign the correct URL to the media state variable
                 resolve({
                   default: url,
                 });
