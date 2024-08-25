@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+// App.js
+import React, { useState, useContext } from 'react';
 import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { AppContext } from './Context';
 import Header from './components/Header';
 import CreatePost from './components/CreatePost';
 import EditPost from './components/EditPost';
 import BlogList from './components/BlogList';
 import AuthForm from './components/AuthForm';
 import PrivateRoute from './components/PrivateRoute';
-import Feed from './components/Feed'; // Import the Feed component
+import Feed from './components/Feed';
+import Modal from './components/Modal';
 import './App.css';
 
 const App = () => {
   const [showAuthForm, setShowAuthForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const { setAdvertDetails } = useContext(AppContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -30,23 +35,48 @@ const App = () => {
     setShowAuthForm(true);
   };
 
+  const handleAddAdvert = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleSaveAdvert = (details) => {
+    setAdvertDetails(details);
+    setShowModal(false);
+  };
+
   return (
     <div className="App">
-      <Header onLogin={handleLogin} />
-      {location.pathname !== '/create-post' && location.pathname !== '/blog-list' && (
+      <div className="header">
+        <Header onLogin={handleLogin} />
+      </div>
+      <div className="content">
+        <div className="left-section">
+          <button className="navButton" onClick={() => navigate('/')}>Home</button>
+          <button className="navButton" onClick={handleStartBlog}>Create Post</button>
+          <button className="navButton" onClick={handleViewPosts}>View Posts</button>
+          <button className="navButton" onClick={handleAddAdvert}>Add advert</button>
+        </div>
+        <div className="right-section">
+          <Routes>
+            <Route path="/" element={<Feed />} />
+            <Route path="/create-post" element={<PrivateRoute><CreatePost /></PrivateRoute>} />
+            <Route path="/edit-post/:postNumber" element={<PrivateRoute><EditPost /></PrivateRoute>} />
+            <Route path="/blog-list" element={<PrivateRoute><BlogList /></PrivateRoute>} />
+            <Route path="/auth" element={<AuthForm />} />
+          </Routes>
+          {showAuthForm && <AuthForm />}
+        </div>
+      </div>
+      {location.pathname === '/' && (
         <div className='blogButton'>
-          <button className='startBlogButton' onClick={handleStartBlog}>Create Post</button>
-          <button className='viewPostsButton' onClick={handleViewPosts}>View Posts</button>
+          <button className="startBlogButton" onClick={handleStartBlog}>Start Blogging</button>
         </div>
       )}
-      <Routes>
-        <Route path="/" element={<Feed />} /> {/* Add the Feed route */}
-        <Route path="/create-post" element={<PrivateRoute><CreatePost /></PrivateRoute>} />
-        <Route path="/edit-post/:postNumber" element={<PrivateRoute><EditPost /></PrivateRoute>} />
-        <Route path="/blog-list" element={<PrivateRoute><BlogList /></PrivateRoute>} />
-        <Route path="/auth" element={<AuthForm />} />
-      </Routes>
-      {showAuthForm && <AuthForm />}
+      <Modal show={showModal} handleClose={handleCloseModal} handleSave={handleSaveAdvert} />
     </div>
   );
 };

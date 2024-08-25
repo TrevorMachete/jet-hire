@@ -12,7 +12,7 @@ import '../App.css';
 const CreatePost = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [media, setMedia] = useState(null); // State to handle media
+  const [media, setMedia] = useState(null);
   const [isMarkdown, setIsMarkdown] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -36,7 +36,7 @@ const CreatePost = () => {
         postNumber,
         title,
         content,
-        media, // Use the media state variable here
+        media, 
         createdAt: new Date(),
         userId: user.uid,
       };
@@ -71,8 +71,8 @@ const CreatePost = () => {
             uploadBytes(storageRef, file)
               .then((snapshot) => getDownloadURL(snapshot.ref))
               .then((url) => {
-                console.log('Upload Adapter URL:', url); // Debugging log
-                setMedia(url); // Assign the correct URL to the media state variable
+                console.log('Upload Adapter URL:', url); 
+                setMedia(url); 
                 resolve({
                   default: url,
                 });
@@ -112,7 +112,7 @@ const CreatePost = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className='checkbox'>
         <label>
           <input
             type="checkbox"

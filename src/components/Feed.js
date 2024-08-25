@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+// Feed.js
+import React, { useState, useEffect, useContext } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
+import { AppContext } from '../Context';
 import '../App.css';
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
+  const { advertDetails } = useContext(AppContext);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -47,7 +50,9 @@ const Feed = () => {
       {posts.map((post) => (
         <div key={post.postNumber} className="card">
           {renderContent(post.content)}
-          <p>Posted on: {new Date(post.createdAt.seconds * 1000).toLocaleDateString()}</p>
+          <div className="additional-content">
+            <div className="advert-banner" dangerouslySetInnerHTML={{ __html: advertDetails }} />
+          </div>
         </div>
       ))}
     </div>

@@ -10,6 +10,7 @@ const AuthForm = () => {
   const [username, setUsername] = useState('');
   const [isRegistering, setIsRegistering] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
@@ -22,6 +23,7 @@ const AuthForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const auth = getAuth();
 
     if (isRegistering) {
@@ -40,6 +42,8 @@ const AuthForm = () => {
       } catch (error) {
         console.error('Error registering user:', error);
         alert('Error registering user:', error.message);
+      } finally {
+        setLoading(false);
       }
     } else {
       // Log in existing user
@@ -49,6 +53,8 @@ const AuthForm = () => {
       } catch (error) {
         console.error('Error logging in user:', error);
         alert('Error logging in user:', error.message);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -90,9 +96,11 @@ const AuthForm = () => {
             required
           />
         </div>
-        <button type="submit">{isRegistering ? 'Register' : 'Log In'}</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Processing...' : isRegistering ? 'Register' : 'Log In'}
+        </button>
       </form>
-      <button className="toggle-button" onClick={() => setIsRegistering(!isRegistering)}>
+      <button className="toggle-button" onClick={() => setIsRegistering(!isRegistering)} disabled={loading}>
         {isRegistering ? 'Already have an account? Log In' : 'Need an account? Register'}
       </button>
     </div>
