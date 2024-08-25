@@ -75,11 +75,15 @@ const BlogList = () => {
           <li key={post.postNumber} className="blog-item">
             {post.media && <img src={post.media} alt={post.title} className="blog-image" />}
             <div className="blog-details">
-              <h6>{post.title}</h6>
+              <h4>{post.title}</h4>
               <p className="post-date">{post.createdAt.toDate().toString()}</p> {/* Add CSS class for the date */}
             </div>
-            <button onClick={() => handleEdit(post.postNumber)}>Edit</button>
-            <button onClick={() => handleDelete(post.postNumber)}>Delete</button>
+
+            <div className="bloglist-button-container">
+              <button className="edit-button" onClick={() => handleEdit(post.postNumber)}>Edit</button>
+              <button className="delete-button" onClick={() => handleDelete(post.postNumber)}>Delete</button>
+            </div>
+
           </li>
         ))}
       </ul>

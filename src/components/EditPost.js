@@ -114,7 +114,7 @@ const EditPost = () => {
   }
 
   return (
-    <div>
+    <div className="edit-window">
       {post ? (
         <form onSubmit={handleUpdate}>
           <input

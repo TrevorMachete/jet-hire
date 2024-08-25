@@ -39,6 +39,7 @@ const CreatePost = () => {
         media, 
         createdAt: new Date(),
         userId: user.uid,
+        advert: '', // Add the advert field here
       };
 
       await updateDoc(userDocRef, {

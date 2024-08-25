@@ -22,7 +22,7 @@ const Modal = ({ show, handleClose, handleSave }) => {
           cols="50"
         />
         <br />
-        <button onClick={() => handleSave(inputValue)}>Save</button>
+        <button className="advert-save-button" onClick={() => handleSave(inputValue)}>Save</button>
       </div>
     </div>
   );

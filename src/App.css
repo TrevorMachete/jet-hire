@@ -49,6 +49,10 @@ body {
   margin-top: 80px;
 }
 
+.edit-window {
+  margin-top: 80px;
+}
+
 .ql-editor img {
   cursor: pointer;
 }
@@ -231,9 +235,10 @@ button:hover {
 .blog-details {
   display: flex;
   flex-direction: column;
+  width: 600px;
 }
 
-.blog-details h3 {
+.blog-details h {
   margin: 0;
 }
 
@@ -245,6 +250,30 @@ button:hover {
 .post-date {
   font-size: 10px;
 }
+
+/* Add this to your CSS file */
+.bloglist-button-container {
+  text-align: right;
+}
+
+.bloglist-button-container button {
+  display: block;
+  margin: 5px 0;
+  padding: 5px;
+  width: 50px;
+  margin-left: 20px;
+  color: white;
+  border: none;
+}
+
+.edit-button {
+  background-color: blue;
+}
+
+.delete-button {
+  background-color: red;
+}
+
 
 
 /* Style the posts in feed */
