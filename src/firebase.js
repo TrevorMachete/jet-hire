@@ -6,12 +6,12 @@ import { getStorage } from 'firebase/storage'; // Import Firebase Storage
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyADpZ43mMv2B7u6n3oq6ASqs2HJWvZebPk",
-  authDomain: "superblisher.firebaseapp.com",
-  projectId: "superblisher",
-  storageBucket: "superblisher.appspot.com",
-  messagingSenderId: "599527726972",
-  appId: "1:599527726972:web:1508bb5a963fd998718ef9"
+  apiKey: "AIzaSyAmlmLnfshKyIl7p7VtLd_n8JXpMA_gA3o",
+  authDomain: "skyhireweb.firebaseapp.com",
+  projectId: "skyhireweb",
+  storageBucket: "skyhireweb.appspot.com",
+  messagingSenderId: "821954081840",
+  appId: "1:821954081840:web:8c78eb81c186f49fc569f5"
 };
 
 // Initialize Firebase
