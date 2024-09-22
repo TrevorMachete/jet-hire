@@ -169,5 +169,5 @@ This project is licensed under the MIT License.
 
 ## **Contact** 📞
 
-- **[Erick Olando ,Tsakani Mohale, Shema Prince Masonga]**
+- **[Macs Machete, Erick Olando ,Tsakani Mohale, Shema Prince Masonga]**
 - **Website:** [SkyHire Website URL](https://skyhireweb.web.app/)
